@@ -20,7 +20,7 @@ function render(data){
 
 function addMessage(e){
 let payload = {
-    usuario:document.getElementById('username').value,
+    usuario:"test user",
     texto:document.getElementById('text').value
 }
 messageUser.push(payload)
