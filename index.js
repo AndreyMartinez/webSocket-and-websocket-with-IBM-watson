@@ -20,7 +20,7 @@ server.listen(3000,() => console.log("server run port 3000"))
   const assistant = new AssistantV1({
       version: '2019-02-28',
       iam_apikey: '*',
-      url: '*'
+      url: 'https://gateway.watsonplatform.net/assistant/api'
   });
 
 
@@ -55,10 +55,10 @@ webSocket.on('connection',(socket) => {
     socket.on('newMessage',function(data){
         sendIbmWatson(data.texto).then(response => {
             console.log(response)
-         messages.push({
+         messages = {
             texto:response.output.text[0],
             usuario:'Raphael Martinez'
-         })
+         }
          console.log('second')
         socket.emit('messages',messages)
         }).catch(err => {

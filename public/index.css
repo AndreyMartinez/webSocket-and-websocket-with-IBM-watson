@@ -1,0 +1,40 @@
+.container-message {
+    width: 70%;
+    margin: 0 auto;
+    border: 1px solid #dddddd;
+    overflow: scroll;
+    height: 520px;
+}
+
+.black-element {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.black-content {
+    background-color: #fdc82b79;
+}
+
+.white-content {
+    background-color: #f5f5f5;
+}
+
+.generic {
+    border-radius: 5px;
+    min-height: 40px;
+    width: 40%;
+    margin: 1%
+}
+
+.texto{
+    padding: 4%;
+}
+.form{
+    text-align: center;
+    margin: 2% 0 0;
+}
+.text-input{
+    width: 50%;
+    height: 27px;
+    border-radius: 4px;
+}
