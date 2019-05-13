@@ -14,15 +14,24 @@ var messages = []
 
 app.use(express.static('./public'))
 
-server.listen(3000,function() {
-     console.log("server run port 3000")}
+server.listen(process.env.PORT || 1337,function() {
+     console.log("server run port 1337")}
      )
 
+     app.use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*"); 
+        res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+        res.header("Access-Control-Allow-Headers", "Content-type,Accept,X-Custom-Header");
+      if (req.method === "OPTIONS") {
+            return res.status(200).end();
+        }
+        next();
+      });
 
   const assistant = new AssistantV1({
       version: '2019-02-28',
-      iam_apikey: 'fWABSMQqpDznXet51DTjsYC8Savn12RpePUaBfZt92wv',
-      url: 'https://gateway.watsonplatform.net/assistant/api'
+      iam_apikey: '*',
+      url: '*'
   });
 
 
