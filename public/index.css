@@ -1,9 +1,49 @@
+html,body, h1 {
+    margin: 0;
+}
+.chatbot{
+    border: 1px solid #80808047;
+    border-radius: 6px 0 0 0;
+    width: 28%;
+    position: absolute;
+    height: 500px;
+    right: 0;
+    bottom: 0;
+}
+.container {
+    height: 87%;
+}
+.image {
+    width: 13%;
+    margin: 0 5%;
+}
+.perichat-text{
+    color: white;
+    font-size: 1.26em;
+    font-family: sans-serif;
+
+}
+
+.navigator {
+    background-color: #529d26a6;
+    border-radius: 5px 0 0 0;
+    height: 11%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 96%;
+    top:0;
+}
+
+h1 {
+    color: white;
+}
+
 .container-message {
-    width: 70%;
-    margin: 0 auto;
-    border: 1px solid #dddddd;
+    width: 100%;
     overflow: scroll;
-    height: 520px;
+    overflow-x: hidden;
+    height: 91%;
 }
 
 .black-element {
@@ -12,7 +52,7 @@
 }
 
 .black-content {
-    background-color: #fdc82b79;
+    background-color: #529d2626;
 }
 
 .white-content {
@@ -22,19 +62,37 @@
 .generic {
     border-radius: 5px;
     min-height: 40px;
-    width: 40%;
+    width: 60%;
     margin: 1%
 }
 
-.texto{
+.texto {
     padding: 4%;
 }
-.form{
+
+.form {
     text-align: center;
-    margin: 2% 0 0;
 }
-.text-input{
-    width: 50%;
-    height: 27px;
-    border-radius: 4px;
+.text-input {
+    width: 65%;
+    height: 43px;
+    z-index: 99;
+    background: #f1f1f1bf;
+    border: none;
+    outline: none;
+    padding-left: 55px;
+    padding-right: 55px;
+    color: #666;
+    font-weight: 400;
+}
+
+.last{
+    top: 30px;
+    left: 115px;
+    font-family: 'Lato';
+    font-size: 11px;
+    font-weight: 400;
+    color:#636060f2;
+    margin: 0 10px 0px;
+    cursor: default;
 }

@@ -14,12 +14,14 @@ var messages = []
 
 app.use(express.static('./public'))
 
-server.listen(3000,() => console.log("server run port 3000"))
+server.listen(3000,function() {
+     console.log("server run port 3000")}
+     )
 
 
   const assistant = new AssistantV1({
       version: '2019-02-28',
-      iam_apikey: '*',
+      iam_apikey: 'fWABSMQqpDznXet51DTjsYC8Savn12RpePUaBfZt92wv',
       url: 'https://gateway.watsonplatform.net/assistant/api'
   });
 
@@ -33,14 +35,14 @@ function sendIbmWatson(message) {
                         'text': message
                     }
                 })
-                .then(message => {
+                .then(function(message) {
                    return message
                 })
-                .catch(err => {
+                .catch(function(err) {
                     console.log(err)
                 });
         })
-        .catch(err => {
+        .catch(function(err) {
             console.log(err)
         });
 }
@@ -48,20 +50,20 @@ function sendIbmWatson(message) {
 
 
 // Generación de socket 
-webSocket.on('connection',(socket) => {
+webSocket.on('connection',function(socket){
     console.log('Se realizo una conexión al web socket ')
     socket.emit('messages',messages)
 
     socket.on('newMessage',function(data){
-        sendIbmWatson(data.texto).then(response => {
+        sendIbmWatson(data.texto).then(function(response){
             console.log(response)
          messages = {
             texto:response.output.text[0],
-            usuario:'Raphael Martinez'
+            usuario:'Perichat'
          }
          console.log('second')
         socket.emit('messages',messages)
-        }).catch(err => {
+        }).catch(function(err){
                 
         })
     })

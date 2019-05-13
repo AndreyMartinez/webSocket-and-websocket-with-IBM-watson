@@ -25,6 +25,7 @@ let payload = {
 messageUser.push(payload)
 renderForm();
 socket.emit('newMessage',payload);
+document.getElementById('text').value = " "
 return false;
 }
 
@@ -36,13 +37,14 @@ return false;
 function renderForm() {
     let html =  messageUser.map((value,index) => {
         console.log(value)
-        return value.usuario == "Raphael Martinez" ?
+        return value.usuario == "Perichat" ?
         `<div>
         <div class="generic white-content">
      <p class="texto">
      <strong>${value.usuario}: </strong>
      ${value.texto}
      </p>
+     <div class="last"> 18:09</div>
      </div>
      </div>`
     :
@@ -52,8 +54,11 @@ function renderForm() {
     <strong>${value.usuario}: </strong>
     ${value.texto}
     </p>
+    <div class="last"> 18:09</div>
     </div>
     </div>`
     })
     document.getElementById('newMessage').innerHTML = html
+divContent = document.getElementsByClassName('container-message')[0];
+divContent.scrollTop = divContent.scrollHeight;
 }
