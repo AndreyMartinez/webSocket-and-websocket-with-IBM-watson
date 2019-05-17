@@ -1,4 +1,4 @@
-var socket = io.connect('https://perichatbot.azurewebsites.net',{'forceNew':true});
+var socket = io.connect('http://localhost:1337',{'forceNew':true});
 var messageUser =[];
 
 
@@ -19,7 +19,7 @@ socket.on('messages',function(data){
  */
 function addMessage(e){
 let payload = {
-    usuario:"test user",
+    usuario:"Usuario periferia",
     texto:document.getElementById('text').value
 }
 messageUser.push(payload)
@@ -40,20 +40,20 @@ function renderForm() {
         return value.usuario == "Perichat" ?
         `<div>
         <div class="generic white-content">
-     <p class="texto">
+     <div class="generic-content">
      <strong>${value.usuario}: </strong>
      ${value.texto}
-     </p>
+     </div>
      <div class="last"> 18:09</div>
      </div>
      </div>`
     :
     `<div class="black-element">
     <div class="generic black-content">
-    <p class="texto">
+    <div class="generic-content"> 
     <strong>${value.usuario}: </strong>
     ${value.texto}
-    </p>
+    </div>
     <div class="last"> 18:09</div>
     </div>
     </div>`

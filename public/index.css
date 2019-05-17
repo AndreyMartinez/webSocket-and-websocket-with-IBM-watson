@@ -2,13 +2,15 @@ html,body, h1 {
     margin: 0;
 }
 .chatbot{
+    margin: 0 2% 2% 0;
     border: 1px solid #80808047;
-    border-radius: 6px 0 0 0;
-    width: 28%;
+    border-radius: 5%;
+    width: 33%;
     position: absolute;
-    height: 500px;
+    height: 612px;
     right: 0;
     bottom: 0;
+    box-shadow: 0.6em 1em 2em black;
 }
 .container {
     height: 87%;
@@ -25,14 +27,14 @@ html,body, h1 {
 }
 
 .navigator {
-    background-color: #529d26a6;
-    border-radius: 5px 0 0 0;
+    background-color: #80b912;
     height: 11%;
     display: flex;
     justify-content: left;
     align-items: center;
-    width: 96%;
+    width: 100%;
     top:0;
+    border-radius: 15px 15px 0 0;
 }
 
 h1 {
@@ -52,32 +54,34 @@ h1 {
 }
 
 .black-content {
-    background-color: #529d2626;
+    background-color: #f8f8f8;
 }
 
 .white-content {
-    background-color: #f5f5f5;
+    background-color: #80b912;
+    color: white;
+    border-radius: 5%;
 }
 
+.generic-content{
+padding: 6%;
+}
 .generic {
-    border-radius: 5px;
+    font-family: sans-serif;
+    border-radius: 5%;
     min-height: 40px;
-    width: 60%;
-    margin: 1%
-}
-
-.texto {
-    padding: 4%;
+    width: 79%;
+    margin: 1% 1% 3% 3%;
 }
 
 .form {
     text-align: center;
 }
 .text-input {
-    width: 65%;
-    height: 43px;
+    width: 67%;
+    height: 52px;
     z-index: 99;
-    background: #f1f1f1bf;
+    background: #e4e4e4;
     border: none;
     outline: none;
     padding-left: 55px;

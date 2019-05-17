@@ -28,7 +28,6 @@ server.listen(process.env.PORT || 1337,function() {
         }
         next();
       });
-
   const assistant = new AssistantV1({
       version: process.env.version,
       iam_apikey: process.env.apikey,
