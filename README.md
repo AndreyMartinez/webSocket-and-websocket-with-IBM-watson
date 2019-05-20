@@ -27,14 +27,6 @@ npm start
 6. __Desplegar temporalmente__:
 
 ~~~~
-docker exec -ti amwayWildfly bash
-
-/opt/jboss/wildfly/welcome-content
-
-mv static /opt/jboss/wildfly/welcome-content
-mv asset-manifest.json /opt/jboss/wildfly/welcome-content
-mv index.html /opt/jboss/wildfly/welcome-content
-mv precache-manifest.e87f7c696513108f45439bfc9cda68c1.js /opt/jboss/wildfly/welcome-content
-mv service-worker.js /opt/jboss/wildfly/welcome-content
+az webapp up -n perichatbot
 ~~~~
 

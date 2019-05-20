@@ -8,8 +8,10 @@ var messageUser =[];
  * @param {array} data data que trae el respectivo servicio
  */
 socket.on('messages',function(data){
+    if(data.length != 0){
     messageUser.push(data)
     renderForm();
+    }
 })
 
 /**
@@ -44,7 +46,7 @@ function renderForm() {
      <strong>${value.usuario}: </strong>
      ${value.texto}
      </div>
-     <div class="last"> 18:09</div>
+     <div class="last white"> 18:09</div>
      </div>
      </div>`
     :

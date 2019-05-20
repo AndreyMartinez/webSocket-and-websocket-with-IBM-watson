@@ -1,3 +1,8 @@
+:root{
+    --second-color:white;
+    --nav-color:#80b912de;
+}
+
 html,body, h1 {
     margin: 0;
 }
@@ -5,7 +10,7 @@ html,body, h1 {
     margin: 0 2% 2% 0;
     border: 1px solid #80808047;
     border-radius: 5%;
-    width: 33%;
+    width: 32%;
     position: absolute;
     height: 612px;
     right: 0;
@@ -20,14 +25,14 @@ html,body, h1 {
     margin: 0 5%;
 }
 .perichat-text{
-    color: white;
+    color: var(--second-color);
     font-size: 1.26em;
     font-family: sans-serif;
 
 }
 
 .navigator {
-    background-color: #80b912;
+    background-color:var(--nav-color);
     height: 11%;
     display: flex;
     justify-content: left;
@@ -38,7 +43,7 @@ html,body, h1 {
 }
 
 h1 {
-    color: white;
+    color: var(--second-color);
 }
 
 .container-message {
@@ -59,7 +64,7 @@ h1 {
 
 .white-content {
     background-color: #80b912;
-    color: white;
+    color: var(--second-color);
     border-radius: 5%;
 }
 
@@ -99,4 +104,18 @@ padding: 6%;
     color:#636060f2;
     margin: 0 10px 0px;
     cursor: default;
+}
+.white {
+    color: var(--second-color);
+}
+
+
+
+@media (max-width: 700px){
+    .chatbot{
+        width: 100%;
+    }
+    .text-input{
+        width: 58%;
+    }
 }
