@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>ChatBoot</title>
     <link rel="stylesheet" href="./index.css">
     <script src="/socket.io/socket.io.js"></script>
     <script src="./main.js"></script>
@@ -14,23 +14,24 @@
 <p>TEST CHAT</p>
 
 </div>
-<div class="chatbot">
-<div class="navigator">
 
-    <img  class="image" src="../img/periferia-icon.png" alt="Cocodrilo">
-    <p class="perichat-text">Perichat</p>
-</div>   
+<div class="chatbot">
+    <div class="navigator">
+        <p class="perichat-text">Perichat</p>
+        <img  class="image" src="../img/periferia-icon.png" alt="Cocodrilo">
+    </div>  
+
     <div class="container">
-    <div class="container-message">
-    <div id="newMessage">
-    
+        <div class="container-message">
+            <div id="newMessage">
+
+            </div>
+        </div>
+        
+        <form onsubmit="return addMessage(this)" class="form">
+            <input type="text" class="text-input" id="text" placeholder="escribir petición"/>
+        </form>
     </div>
-    </div>
-    <form onsubmit="return addMessage(this)" class="form">
-    <input type="text" class="text-input" id="text" placeholder="escribir petición"/>
-    </form>
-    </div>
-    
-    </div>
+</div>
 </body>
 </html>

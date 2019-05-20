@@ -41,23 +41,23 @@ function renderForm() {
         console.log(value)
         return value.usuario == "Perichat" ?
         `<div>
-        <div class="generic white-content">
-     <div class="generic-content">
-     <strong>${value.usuario}: </strong>
-     ${value.texto}
-     </div>
-     <div class="last white"> 18:09</div>
-     </div>
-     </div>`
+        <div class="perichat-generic white-content">
+            <div class="perichat-content">
+                <strong>${value.usuario}: </strong>
+                ${value.texto}
+            </div>
+            <div class="last white"> 18:09</div>
+            </div>
+        </div>`
     :
     `<div class="black-element">
-    <div class="generic black-content">
-    <div class="generic-content"> 
-    <strong>${value.usuario}: </strong>
-    ${value.texto}
-    </div>
-    <div class="last"> 18:09</div>
-    </div>
+        <div class="user-generic black-content">
+            <div class="user-content"> 
+                <strong>${value.usuario}: </strong>
+                ${value.texto}
+            </div>
+            <div class="last"> 18:09</div>
+        </div>
     </div>`
     })
     document.getElementById('newMessage').innerHTML = html
