@@ -1,5 +1,5 @@
-var socket = io.connect('https://perichatbot.azurewebsites.net',{'forceNew':true});
-//var socket = io.connect('localhost:1337',{'forceNew':true});
+// var socket = io.connect('https://perichatbot.azurewebsites.net',{'forceNew':true});
+var socket = io.connect('localhost:1337',{'forceNew':true});
 var messageUser =[];
 
 

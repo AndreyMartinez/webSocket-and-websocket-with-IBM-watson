@@ -1,16 +1,19 @@
+//Library
 var express = require('express')
 var http = require('http')
 var socketIO = require('socket.io')
-
 var app = express();
 var server = http.Server(app);
 var webSocket = socketIO(server);
 const dotenv = require('dotenv');
 
+//modules
+var chatModule = require('./src/modules/chatModule')
 //Watson 
 const AssistantV1 = require('ibm-watson/assistant/v1');
 const LanguageTranslatorV3 = require('watson-developer-cloud/language-translator/v3');
 const fs = require('fs');
+
 
 var language; 
 
@@ -92,13 +95,13 @@ webSocket.on('connection',function(socket){
     console.log(messages)
 
     socket.on('newMessage',function(data){
-        translate(data.texto,'user').then(response => {
+        chatModule.translate(data.texto,'user').then(response => {
             sendIbmWatson(response).then(function(response){
                 messages = {
                    texto:response.output.text[0],
                    usuario:'Perichat'
                 }
-                translate(messages.texto,messages.usuario).then(response =>{
+                chatModule.translate(messages.texto,messages.usuario).then(response =>{
                     messages.texto= response
                     socket.emit('messages',messages)
                 })
@@ -110,86 +113,3 @@ webSocket.on('connection',function(socket){
              })
     })
 })
-
-
-
-/**
- * @author Raphael Martinez
- * @description manejo lenguaje
- */
-const languageTranslator = new LanguageTranslatorV3({
-    version: process.env.version,
-    iam_apikey: 'LfsJbtum4UKhmNgVa8T0mj-n77pwovmoPUPJZAKQi7q1',
-    url: 'https://gateway.watsonplatform.net/language-translator/api',
-    headers: {
-        'X-Watson-Learning-Opt-Out': 'true'
-      }
-  });
-
-  const translateParams = {
-    text: '',
-  };
-  
-  function translate(text,user){
-    translateParams.text=text
-   return languageTranslator.identify(translateParams).then(response => {
-    
-    //
-    if(response.languages[0].language ==="es" && user === "user"){
-        console.log('1',response.languages[0].language,user,language)
-        language = "es"; 
-        return text;
-    }
-    //
-     else if (language ==="es" && user === "Perichat"){
-        console.log('2',response.languages[0].language,user,language)
-              return text
-    }
-    //
-    else {
-        console.log('3',response.languages[0].language,user,language)
-        language = user==="user" ? response.languages[0].language : language
-    translateParams.model_id = user==="user" ? `${response.languages[0].language}-es` :`es-${language}` 
-     console.log(translateParams)
-    return  languageTranslator.translate(translateParams)
-              .then(translationResult => {
-                  console.log(translateParams)
-            return    translationResult.translations[0].translation
-              })
-              .catch(err => {
-                console.log(err)
-                 createLanguage(translateParams)
-              });
-            }
-            }).catch(err => {
-                console.log(err)
-  })
-  }
-
-
-
-  //Create new language
-
-const createModelParams = {
-    name: 'custom-pt-es',
-    base_model_id: 'pt-es',
-    forced_glossary: fs.createReadStream('./glossary.tmx'),
-};
-
-function createLanguage(params) {
-    console.log("entro"+createModelParams)
-    languageTranslator.listModels()
-  .then(translationModels => {
-    console.log(JSON.stringify(translationModels, null, 2));
-  })
-  .catch(err => {
-    console.log('error:', err);
-  }); 
-    // .then(translationModel => {
-        //     console.log(JSON.stringify(translationModel, null, 2));
-        // })
-        // .catch(err => {
-        //     console.log('error:', err);
-        // });
-
-}
