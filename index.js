@@ -10,13 +10,6 @@ const dotenv = require('dotenv');
 //modules
 var chatModule = require('./src/modules/chatTranslateModule')
 var chatWatson = require('./src/modules/chatSocketWatsonModule')
-//Watson 
-const AssistantV1 = require('ibm-watson/assistant/v1');
-const LanguageTranslatorV3 = require('watson-developer-cloud/language-translator/v3');
-const fs = require('fs');
-
-
-var language; 
 
 var messages = []
 
@@ -46,17 +39,6 @@ server.listen(process.env.PORT || 1337,function() {
         }
         next();
       });
-
-
- /**
-  * @author Raphael Andrey 
-  * @description Variables de asistance Watson 
-  */     
-  const assistant = new AssistantV1({
-      version: process.env.version,
-      iam_apikey: process.env.apikey,
-      url: process.env.url
-  });
 
 /**
  * @author Raphael Martinez
