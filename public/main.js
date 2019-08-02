@@ -45,7 +45,7 @@ function renderForm() {
         <div class="perichat-generic white-content">
             <div class="perichat-content">
                 <strong>${value.usuario}: </strong>
-                ${value.texto}
+                ${value.texto !== undefined ? value.texto : 'Lo siento no pude entender bien tu pregunta, puedes reformular la misma' }
             </div>
             <div class="last white"> 18:09</div>
             </div>
