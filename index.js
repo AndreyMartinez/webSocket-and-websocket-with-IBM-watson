@@ -8,7 +8,8 @@ var webSocket = socketIO(server);
 const dotenv = require('dotenv');
 
 //modules
-var chatModule = require('./src/modules/chatModule')
+var chatModule = require('./src/modules/chatTranslateModule')
+var chatWatson = require('./src/modules/chatSocketWatsonModule')
 //Watson 
 const AssistantV1 = require('ibm-watson/assistant/v1');
 const LanguageTranslatorV3 = require('watson-developer-cloud/language-translator/v3');
@@ -59,57 +60,16 @@ server.listen(process.env.PORT || 1337,function() {
 
 /**
  * @author Raphael Martinez
- * @description Está función se encarga de enviar el mensaje que llega al servidor
- * @param {any} message Mensaje que llega del respectivo usuario
- */
-function sendIbmWatson(message) {
-   return assistant.listWorkspaces()
-        .then(function(res) {
-        return  assistant.message({
-                    workspace_id: res.workspaces[0].workspace_id,
-                    input: {
-                        'text': message
-                    }
-                })
-                .then(function(message) {
-                   return message
-                })
-                .catch(function(err) {
-                    console.log("err")
-                });
-        })
-        .catch(function(err) {
-            console.log(err)
-        });
-}
-
-
-
-/**
- * @author Raphael Martinez
  * @description manejo de socket
  */
 webSocket.on('connection',function(socket){
     console.log('Se realizo una conexión al web socket ')
      socket.emit('messages',messages)
-    console.log(messages)
-
-    socket.on('newMessage',function(data){
+     socket.on('newMessage',function(data){
         chatModule.translate(data.texto,'user').then(response => {
-            sendIbmWatson(response).then(function(response){
-                messages = {
-                   texto:response.output.text[0],
-                   usuario:'Perichat'
-                }
-                chatModule.translate(messages.texto,messages.usuario).then(response =>{
-                    messages.texto= response
-                    socket.emit('messages',messages)
-                })
-              }).catch(function(err){
-                       console.log("1")
-               })
+            chatWatson.sendDataIbmWatson(socket,response)
              }).catch(err => {
-                 console.log("2")
+                 console.log(err)
              })
     })
 })

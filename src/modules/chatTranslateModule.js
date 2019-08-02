@@ -95,5 +95,4 @@ function translate (text, user) {
 module.exports = {
     createLanguage:createLanguage,
     translate:translate
-
 }
