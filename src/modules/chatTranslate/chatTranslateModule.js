@@ -40,7 +40,7 @@ const translateParams = {
  * @param {*} user : Usuario que envia el texto
  */
 function translate (text, user) {
-    translateParams.text = text
+     translateParams.text = text
     return languageTranslator.identify(translateParams).then(response => {
         if (response.languages[0].language === "es" && user === "user") {
             language = "es";
@@ -50,10 +50,8 @@ function translate (text, user) {
         } else {
             language = user === "user" ? response.languages[0].language : language
             translateParams.model_id = user === "user" ? `${response.languages[0].language}-es` : `es-${language}`
-            console.log(translateParams)
             return languageTranslator.translate(translateParams)
                 .then(translationResult => {
-                    console.log(translateParams)
                     return translationResult.translations[0].translation
                 })
                 .catch(err => {
@@ -65,6 +63,8 @@ function translate (text, user) {
         console.log(err)
     })
 }
+
+
 
 
 /**

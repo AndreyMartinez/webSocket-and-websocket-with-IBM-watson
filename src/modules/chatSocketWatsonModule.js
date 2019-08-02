@@ -2,7 +2,7 @@
 const AssistantV1 = require('ibm-watson/assistant/v1');
 
 //modules 
-const chatTranslate = require('./chatTranslateModule') 
+const chatTranslate = require('./chatTranslate/chatTranslateModule') 
 
 /**
   * @author Raphael Andrey 

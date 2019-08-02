@@ -8,7 +8,7 @@ var webSocket = socketIO(server);
 const dotenv = require('dotenv');
 
 //modules
-var chatModule = require('./src/modules/chatTranslateModule')
+var chatModule = require('./src/modules/chatTranslate/chatTranslateModule')
 var chatWatson = require('./src/modules/chatSocketWatsonModule')
 
 var messages = []
