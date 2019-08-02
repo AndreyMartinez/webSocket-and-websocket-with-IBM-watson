@@ -19,3 +19,7 @@ npm start
 
 5. __Ir al navegador correr en puerto__: localhost:3000
 
+# Generar pruebas unitarias con JEST 
+~~~
+npm run test
+~~~
